@@ -12,6 +12,7 @@ app.use(express.urlencoded({ extended: true }));
 mongoose
   .connect("mongodb://127.0.0.1:27017/wtwr_db")
   .then(() => {
+    /* eslint-disable-next-line no-console */
     console.log("Connected to MongoDB");
   })
   .catch(console.error);
@@ -19,5 +20,6 @@ mongoose
 app.use("/", mainRouter);
 
 app.listen(PORT, () => {
+  /* eslint-disable-next-line no-console */
   console.log(`Example app listening at http://localhost:${PORT}`);
 });
