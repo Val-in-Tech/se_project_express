@@ -20,6 +20,11 @@ const clothingItemSchema = new mongoose.Schema({
       message: 'Invalid URL',
     },
   },
+  owner: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'user',
+    required: true,
+  },
 });
 
 module.exports = mongoose.model('ClothingItem', clothingItemSchema);

@@ -10,16 +10,11 @@ const pickFirstString = (...vals) => {
 };
 
 const createItem = (req, res) => {
-  /* eslint-disable-next-line no-console */
-  console.log('Request headers:', req.headers);
-  /* eslint-disable-next-line no-console */
-  console.log('Request body:', req.body);
-
   const { name, weather, imageUrl } = req.body || {};
-
   const nameVal = pickFirstString(name, req.body?.itemName, req.body?.title);
   const weatherVal = pickFirstString(weather, req.body?.condition, req.body?.climate);
   const imageUrlVal = pickFirstString(imageUrl, req.body?.image, req.body?.image_url, req.body?.img);
+  const owner = req.user && req.user._id;
 
   if (!nameVal || !weatherVal || !imageUrlVal) {
     return res.status(400).json({
@@ -27,10 +22,9 @@ const createItem = (req, res) => {
     });
   }
 
-  return ClothingItem.create({ name: nameVal, weather: weatherVal, imageUrl: imageUrlVal })
+  return ClothingItem.create({ name: nameVal, weather: weatherVal, imageUrl: imageUrlVal, owner })
     .then((item) => res.status(201).json(item))
     .catch((err) => {
-      /* eslint-disable-next-line no-console */
       console.error('Creation error:', err);
       if (err && err.name === 'ValidationError') {
         const messages = Object.values(err.errors).map((e) => e.message).join(', ');
@@ -55,13 +49,16 @@ const deleteItem = (req, res) => {
   if (!mongoose.Types.ObjectId.isValid(itemId)) {
     return res.status(400).json({ message: 'Invalid item ID' });
   }
-  return ClothingItem.findByIdAndDelete(itemId)
+  return ClothingItem.findById(itemId)
     .then((item) => {
       if (!item) return res.status(404).json({ message: 'Item not found' });
-      return res.status(200).json({ message: 'Item deleted successfully' });
+      if (String(item.owner) !== String(req.user._id)) {
+        return res.status(403).json({ message: 'You do not have permission to delete this item' });
+      }
+      return ClothingItem.findByIdAndDelete(itemId)
+        .then(() => res.status(200).json({ message: 'Item deleted successfully' }));
     })
     .catch((err) => {
-      /* eslint-disable-next-line no-console */
       console.error(err);
       return res.status(500).json({ message: 'Internal Server Error' });
     });
