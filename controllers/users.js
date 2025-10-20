@@ -1,3 +1,9 @@
+const User = require('../models/user');
+const validator = require('validator');
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const { JWT_SECRET } = require('../utils/config');
+
 // PATCH /users/me — update profile
 const updateCurrentUser = async (req, res) => {
   try {
@@ -19,8 +25,6 @@ const updateCurrentUser = async (req, res) => {
     return res.status(500).send({ message: err.message });
   }
 };
-const User = require('../models/user');
-
 // Get /users
 const getUsers = (req, res) => {
   User.find({})
@@ -31,8 +35,7 @@ const getUsers = (req, res) => {
     });
 };
 
-const validator = require('validator');
-const bcrypt = require('bcryptjs');
+
 
 const createUser = async (req, res) => {
   try {
@@ -97,9 +100,7 @@ const getCurrentUser = (req, res) => {
     });
 };
 
-// Login controller
-const jwt = require('jsonwebtoken');
-const { JWT_SECRET } = require('../utils/config');
+
 
 const loginUser = async (req, res) => {
   try {

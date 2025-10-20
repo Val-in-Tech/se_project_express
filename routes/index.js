@@ -10,9 +10,7 @@ router.get("/", (req, res) => {
 });
 
 
-// Auth routes at root
-router.post('/signin', loginUser);
-router.post('/signup', createUser);
+// Protected routes (signin/signup are defined publicly in app.js)
 router.get('/users/me', getCurrentUser);
 router.patch('/users/me', updateCurrentUser);
 
