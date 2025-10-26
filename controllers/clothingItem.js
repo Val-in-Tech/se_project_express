@@ -11,12 +11,17 @@ const pickFirstString = (...vals) => {
 
 const createItem = (req, res) => {
   const { name, weather, imageUrl } = req.body || {};
+  // Debug: log incoming payload to help trace bad requests from frontend
+  /* eslint-disable-next-line no-console */
+  console.log('createItem called with body:', JSON.stringify(req.body));
   const nameVal = pickFirstString(name, req.body?.itemName, req.body?.title);
   const weatherVal = pickFirstString(weather, req.body?.condition, req.body?.climate);
   const imageUrlVal = pickFirstString(imageUrl, req.body?.image, req.body?.image_url, req.body?.img);
   const owner = req.user && req.user._id;
 
   if (!nameVal || !weatherVal || !imageUrlVal) {
+    /* eslint-disable-next-line no-console */
+    console.warn('Validation failed in createItem — parsed:', { nameVal, weatherVal, imageUrlVal });
     return res.status(400).json({
       message: 'Missing required fields: name, weather and imageUrl are required',
     });

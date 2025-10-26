@@ -27,7 +27,8 @@ mongoose
 // Public routes
 app.post('/signin', require('./controllers/users').loginUser);
 app.post('/signup', require('./controllers/users').createUser);
-app.get('/items', require('./routes/clothingItem'));
+// Expose GET /items publicly, but keep other item routes protected (POST/DELETE require auth)
+app.get('/items', require('./controllers/clothingItem').getItems);
 
 // Protect all other routes
 app.use(auth);
