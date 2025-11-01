@@ -1,7 +1,7 @@
 const router = require("express").Router();
 
 const userRouter = require("./users");
-const { loginUser, createUser, getCurrentUser, updateCurrentUser } = require('../controllers/users');
+const { loginUser, createUser, getCurrentUser, updateCurrentUser } = require('../controllers/usersController');
 const clothingRouter = require("./clothingItem");
 
 
