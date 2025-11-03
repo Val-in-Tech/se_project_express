@@ -9,6 +9,7 @@ const validateURL = (value, helpers) => {
 };
 
 module.exports.validateItemBody = celebrate({
+  // allow unknown keys so clients can send helper fields like `_id` without failing validation
   body: Joi.object().keys({
     name: Joi.string().required().min(2).max(30).messages({
       'string.min': 'The minimum length of the "name" field is 2',
@@ -22,7 +23,7 @@ module.exports.validateItemBody = celebrate({
     weather: Joi.string().required().messages({
       'string.empty': 'The "weather" field must be filled in',
     }),
-  }),
+  }).unknown(true),
 });
 
 module.exports.validateUserBody = celebrate({

@@ -31,6 +31,13 @@ mongoose
   .catch(console.error);
 
 
+// Crash-test route for code review (intentionally crashes the server)
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Server will crash now');
+  }, 0);
+});
+
 // Public routes with validation
 app.post('/signin', validation.validateLogin, require('./controllers/usersController').loginUser);
 app.post('/signup', validation.validateUserBody, require('./controllers/usersController').createUser);
