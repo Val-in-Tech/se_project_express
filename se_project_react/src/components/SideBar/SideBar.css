@@ -1,0 +1,84 @@
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 1440px;
+  width: auto;
+  box-sizing: border-box;
+  margin-top: 0; /* removed large negative offset to avoid overlapping */
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  position: relative;
+}
+
+.sidebar__media {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 12px;
+  margin-left: 10px;
+}
+
+.sidebar__profile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+
+}
+
+.sidebar__avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-top: 0;
+  margin-right: 12px;
+}
+
+.sidebar__links {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.sidebar__profile-data,
+.sidebar__signout {
+  background: none;
+  border: none;
+  color: #212121;
+  padding: 0;
+  font-family: Cabinet Grotesk, sans-serif;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+
+.sidebar__info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* vertically align name with avatar */
+  padding-left: 0;
+}
+
+.sidebar__name {
+  display: flex;
+  flex-direction: row;
+  gap: 6px;
+  height: 40px; /* same height as avatar */
+  align-items: center;
+  margin-left: -15px;
+  
+}
+
+.sidebar__firstname,
+.sidebar__lastname {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+}

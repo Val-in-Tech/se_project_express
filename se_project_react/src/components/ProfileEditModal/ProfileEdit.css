@@ -1,0 +1,95 @@
+.modal__content-profile {
+  background: #fff;
+  border-radius: 12px;
+  padding: 18px 20px;
+  width: 500px; 
+  height: 280px; 
+  box-shadow: 0 6px 18px #00000014;
+  border: 1px solid rgba(0,0,0,0.06);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-bottom: 380px;
+}
+
+/* reuse modal header styles from other modal CSS if present */
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.modal-header h2 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.profile-modal__form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.profile-modal__label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  color: #111;
+}
+
+.profile-modal__input {
+  background: transparent;
+  padding: 8px 4px;
+  margin-top: 5px;
+  border-radius: 0;
+  box-sizing: border-box;
+  border: none;
+  border-bottom: 1px solid #212121;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.profile-modal__actions {
+  margin-top: 25px;
+  display: flex;
+  justify-content: flex-end;
+
+}
+
+/* reuse submit button style from ModalWithForm; keep consistent look */
+.profile__submit-btn {
+  background-color: #000000;
+  opacity: 1;
+  width: 124px;
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-weight: 700;
+  line-height: 20px;
+  display: flex;
+  justify-content: center;
+  color: white;
+  border: none;
+  padding: 10px;
+  margin-right: 380px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.profile__submit-btn:hover {
+  opacity: 0.9;
+}

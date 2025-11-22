@@ -1,0 +1,18 @@
+[Unit]
+Description=WTWR Express API
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/mnt/d/TripTenProj/wtwr/se_project_express
+Environment=NODE_ENV=production
+Environment=PORT=3001
+# If you set a CORS_ALLOWED value, export it here (comma-separated list)
+# Environment=CORS_ALLOWED=https://closet.wtwr.verymad.net
+ExecStart=/usr/bin/node app.js
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

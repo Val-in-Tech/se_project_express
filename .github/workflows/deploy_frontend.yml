@@ -1,0 +1,48 @@
+name: Build and Deploy Frontend
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        working-directory: se_project_react
+        run: npm ci
+
+      - name: Build production bundle
+        working-directory: se_project_react
+        env:
+          VITE_API_URL: ${{ secrets.VITE_API_URL }}
+        run: npm run build
+
+      - name: Start SSH agent and add key
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.DEPLOY_KEY }}
+
+      - name: Deploy `dist/` to remote server via rsync
+        env:
+          RSYNC_RSH: "ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null"
+          DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+          DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
+        run: |
+          echo "Deploying to $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH"
+          rsync -avz --delete se_project_react/dist/ "$DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH"
+          echo "Setting ownership and reloading nginx on remote host"
+          ssh -o StrictHostKeyChecking=no "$DEPLOY_USER@$DEPLOY_HOST" "sudo mkdir -p '$DEPLOY_PATH' && sudo chown -R www-data:www-data '$DEPLOY_PATH' || true && sudo nginx -t && sudo systemctl reload nginx || true"

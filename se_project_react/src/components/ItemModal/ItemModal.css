@@ -1,0 +1,139 @@
+.modal__item {
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-weight: 700;
+  padding: 0;
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  max-width: 498px;   
+  width: 498px;       
+  height: 610px;      
+  display: flex;
+  flex-direction: column;
+  position: relative;
+ 
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+}
+
+.modal-title {
+  font-family: Cabinet Grotesk, sans-serif;
+  font-weight: 700;
+  font-style: bold;
+  font-size: 24px;
+  margin-bottom: 50px;
+  margin-top: 10px;    
+  margin-left: 24px;   
+}
+
+.modal-image {
+  width: 498px;
+  height: 498px;
+  display: block;
+  object-fit: cover;   
+  margin: 0 auto 16px auto; 
+}
+
+.modal-caption {
+  margin-top: 0;
+  background: rgba(255,255,255,0.95); 
+  color: #222;
+  padding: 16px 0 0 0;
+  font-size: 20px;
+  text-align: center;
+  border-radius: 0 0 12px 12px; 
+}
+
+.modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.modal-close:hover {
+  color: #ccc;
+  cursor: pointer;
+}
+
+/* new: style the textual close icon to look like a circular button */
+.modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: none;
+  border: none;
+  padding: 6px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-close__img {
+  width: 16px;
+  height: 16px;
+  display: block;
+}
+
+.modal__is-open {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;      
+  justify-content: center;  
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.modal__content-garment {
+  background: #fff;
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  width: 496px;
+  height: 436px;;
+  padding: 28px 28px 36px;
+  margin-bottom: 730px;
+  border-radius: 10px;
+}
+
+.modal__input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  box-sizing: border-box;
+  border: 1px solid #212121;
+  border-radius: 4px;
+}
+
+.modal__delete-button {
+  position: absolute;
+  bottom: 48px;         
+  right: 20px;
+  background-color: #fff;
+  color: #ff4d4f;
+  border: none;
+  padding: 12px 24px;   
+  border-radius: 4px;
+  font-size: 20px;
+  cursor: pointer;
+}

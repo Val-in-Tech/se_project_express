@@ -1,0 +1,161 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 5px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.modal__is-open {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  background: rgba(0,0,0,0.35);
+}
+
+.modal__content-garment {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px 20px 12px 20px;
+  height: 436px;
+  margin-top: 400px;
+  width: 496px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  border: 1px solid rgba(0,0,0,0.06);
+}
+
+
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.modal-header h2 {
+  margin: 0;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.modal__form {
+  display: flex;
+  flex-direction: column;
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-weight: 700;
+  line-height: 20px;
+  font-size: 16px;
+  gap: 12px;
+}
+
+.modal__fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.modal__label {
+  display: block;
+  font-size: 14px;
+  color: #111;
+}
+
+.modal__input {
+  width: 100%;
+  padding: 8px 4px;
+  margin-top: 6px;
+  border: none;
+  border-bottom: 1px solid #000;
+  background: transparent;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.modal__weather-group {
+  display: flex;
+  flex-direction: column;  
+  gap: 16px;               
+  margin-top: 15px;  
+  cursor: pointer;
+}
+
+.modal__submit-btn {
+  background-color: #000000;
+  opacity: 30%;
+  width: 124px;
+  font-family: "Cabinet Grotesk", sans-serif;
+  font-weight: 700;
+  line-height: 20px;
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 12px; /* tighten vertical gap above button */
+}
+
+.modal__submit-btn:hover {
+  opacity: 0.9;
+}
+
+.modal__submit-btn:active {
+  background: #000;
+  color: #fff; 
+  opacity: 1;
+}
+
+.modal__weather-option {
+  opacity: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px; 
+}
+
+.modal__weather-option:has(input:checked) {
+  color: #000000;
+  opacity: 1;
+}
+
+.modal__error {
+  color: #ff4d4f;
+  margin-top: 8px;
+}
